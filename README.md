@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/5a197516-1804-40f3-9fd0-87df05495162
 > The example above involves naive file watching, and so is much slower than in practice. 
 
 
-`go-markdown` can process markdown (2000+ lines) files in >3.5ms:
+`go-markdown` can process markdown (2000+ lines) files in <3.5ms:
 
 <p align="center"><img width="100%" alt="Screenshot 2025-02-04 at 19 29 58" src="https://github.com/user-attachments/assets/7e80af67-8f6d-4b4f-81d5-c7c3e7f27cf2" /></p>
 
