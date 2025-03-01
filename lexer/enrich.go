@@ -34,7 +34,7 @@ func (l *Lexer) enrichToken(token Token) Token {
 	switch token.Type {
 	case TokenEOF:
 		return Token{Type: token.Type, Value: ""}
-	case TokenNewLine:
+	case TokenBreak:
 		return Token{Type: token.Type, Value: ""}
 
 	case TokenHeading:

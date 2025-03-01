@@ -9,7 +9,7 @@ type TokenType int
 
 const (
 	TokenEOF TokenType = iota
-	TokenNewLine
+	TokenBreak
 	TokenText
 	TokenHeading
 	TokenBold
@@ -26,7 +26,7 @@ const (
 
 var TokenTypeStrings = map[TokenType]string{
 	TokenEOF:             "EOF",
-	TokenNewLine:         "NewLine",
+	TokenBreak:           "Break",
 	TokenText:            "Text",
 	TokenHeading:         "Heading",
 	TokenBold:            "Bold",

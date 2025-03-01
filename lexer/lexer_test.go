@@ -46,7 +46,7 @@ func TestLexerPlainText(t *testing.T) {
 			input: "This is plain text\n",
 			expected: []Token{
 				{Type: TokenText, Value: "This is plain text", CleanValue: "This is plain text"},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenEOF, Value: ""},
 			},
 		},
@@ -77,7 +77,7 @@ func TestLexerHeadings(t *testing.T) {
 			input: "# Heading\nNormal text",
 			expected: []Token{
 				{Type: TokenHeading, Value: "# Heading", CleanValue: "Heading", Meta: HeadingMeta{Level: 1}},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenText, Value: "Normal text", CleanValue: "Normal text"},
 				{Type: TokenEOF, Value: ""},
 			},
@@ -231,9 +231,9 @@ func TestLexerFencedCodeBlock(t *testing.T) {
 			input: "before\n```\ncode\n```\nafter",
 			expected: []Token{
 				{Type: TokenText, Value: "before", CleanValue: "before"},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenFencedCodeBlock, Value: "```\ncode\n```", CleanValue: "\ncode\n"},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenText, Value: "after", CleanValue: "after"},
 				{Type: TokenEOF, Value: ""},
 			},
@@ -282,9 +282,9 @@ func TestLexerUnorderedList(t *testing.T) {
 			expected: []Token{
 				{Type: TokenUnorderedList, Value: "- first", CleanValue: "first"},
 
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenUnorderedList, Value: "+ second", CleanValue: "second"},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenUnorderedList, Value: "* third", CleanValue: "third"},
 				{Type: TokenEOF, Value: ""},
 			},
@@ -316,9 +316,9 @@ func TestLexerBlockquote(t *testing.T) {
 			input: "before\n> quoted text\nafter",
 			expected: []Token{
 				{Type: TokenText, Value: "before", CleanValue: "before"},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenBlockquote, Value: "> quoted text", CleanValue: "quoted text", Meta: BlockquoteMeta{Depth: 1}},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenText, Value: "after", CleanValue: "after"},
 				{Type: TokenEOF, Value: ""},
 			},
@@ -329,7 +329,7 @@ func TestLexerBlockquote(t *testing.T) {
 			expected: []Token{
 				{Type: TokenBlockquote, Value: "> first quote", CleanValue: "first quote", Meta: BlockquoteMeta{Depth: 1}},
 
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenBlockquote, Value: "> second quote", CleanValue: "second quote", Meta: BlockquoteMeta{Depth: 1}},
 				{Type: TokenEOF, Value: ""},
 			},
@@ -385,9 +385,9 @@ func TestLexerHorizontalRule(t *testing.T) {
 			input: "before\n---\nafter",
 			expected: []Token{
 				{Type: TokenText, Value: "before", CleanValue: "before"},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenHorizontalRule, Value: "---", CleanValue: "---"},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenText, Value: "after", CleanValue: "after"},
 				{Type: TokenEOF, Value: ""},
 			},
@@ -419,9 +419,9 @@ func TestLexerOrderedList(t *testing.T) {
 			input: "1. first\n2. second\n3. third",
 			expected: []Token{
 				{Type: TokenOrderedList, Value: "1. first", CleanValue: "first", Meta: OrderedListMeta{Number: 1}},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenOrderedList, Value: "2. second", CleanValue: "second", Meta: OrderedListMeta{Number: 2}},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenOrderedList, Value: "3. third", CleanValue: "third", Meta: OrderedListMeta{Number: 3}},
 				{Type: TokenEOF, Value: ""},
 			},
@@ -439,9 +439,9 @@ func TestLexerOrderedList(t *testing.T) {
 			input: "before\n1. list item\nafter",
 			expected: []Token{
 				{Type: TokenText, Value: "before", CleanValue: "before"},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenOrderedList, Value: "1. list item", CleanValue: "list item", Meta: OrderedListMeta{Number: 1}},
-				{Type: TokenNewLine, Value: ""},
+				{Type: TokenBreak, Value: ""},
 				{Type: TokenText, Value: "after", CleanValue: "after"},
 				{Type: TokenEOF, Value: ""},
 			},
