@@ -89,7 +89,11 @@ func lexText(l *Lexer) stateFn {
 				l.start = originalPos
 			}
 			l.next()
-			l.emit(TokenBreak)
+
+			if l.peek() == '\n' {
+				l.next()
+				l.emit(TokenBreak)
+			}
 			l.start = l.pos
 			continue
 		}
