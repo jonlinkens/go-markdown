@@ -41,14 +41,13 @@ var TokenTypeStrings = map[TokenType]string{
 	TokenHorizontalRule:  "HorizontalRule",
 }
 
-type TokenMeta interface {
-}
+type TokenMeta any
 
 type Token struct {
-	Type       TokenType   `json:"type"`
-	Value      string      `json:"rawValue"`
-	CleanValue string      `json:"cleanValue"`
-	Meta       interface{} `json:"meta"`
+	Type       TokenType `json:"type"`
+	Value      string    `json:"rawValue"`
+	CleanValue string    `json:"cleanValue"`
+	Meta       any       `json:"meta"`
 }
 
 func (t Token) String() string {
