@@ -59,7 +59,7 @@ func (n *NodeType) FromString(s string) bool {
 type Node struct {
 	Type     NodeType     `json:"type"`
 	Value    string       `json:"value"`
-	Meta     interface{}  `json:"meta,omitempty"`
+	Meta     any          `json:"meta,omitempty"`
 	Children []*Node      `json:"children,omitempty"`
 	Token    *lexer.Token `json:"-"`
 }

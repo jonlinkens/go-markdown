@@ -10,7 +10,7 @@ import (
 type NodeSerializer struct {
 	Type     string           `json:"type"`
 	Value    string           `json:"value,omitempty"`
-	Meta     interface{}      `json:"meta,omitempty"`
+	Meta     any              `json:"meta,omitempty"`
 	Children []NodeSerializer `json:"children,omitempty"`
 }
 
